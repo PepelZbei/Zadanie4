@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent_div"></div>
+    <script>
+        let coord_x=100;
+        let coord_y=100;
+        function new_div_print(){
+            let new_point=document.createElement('div');
+            new_point.style.width="50px";
+            new_point.style.height="50px";
+            new_point.className="example";
+            new_point.style.position="absolute";
+            new_point.style.top=coord_y+'px';
+            new_point.style.left=coord_x+'px';
+            new_point.style.backgroundColor="green";
+            document.getElementById('parent_div').append(new_point);
+
+            if(coord_x<=350){
+                coord_x=coord_x+2;
+                coord_y=coord_y+6;
+            }
+            if(coord_x>=350&&coord_x<=500){
+                coord_x=coord_x+2;
+                coord_y=coord_y-6;
+            }
+            if(coord_x>=500&&coord_x<=650){
+                coord_x=coord_x+2;
+                coord_y=coord_y+6;
+            }
+            if(coord_x>=650&&coord_x<=900){
+                coord_x=coord_x+2;
+                coord_y=coord_y-6;
+            }
+        }
+        setInterval(new_div_print,10);
+        document.write('<button onClick="drop_block();">Удалить</button>');
+        function drop_block(){
+            let coll=document.getElementById('parent_div');
+            coll.remove();
+        }
+    </script>
+</body>
+</html>
